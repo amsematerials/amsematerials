@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/news/:slug", "destination": "/news/:slug.html" },
+    { "source": "/news/:slug/", "destination": "/news/:slug.html" }
+  ]
+}

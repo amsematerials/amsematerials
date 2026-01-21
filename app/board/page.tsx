@@ -11,7 +11,7 @@ function Banner() {
 
       <div className="relative px-6 py-10 md:px-10 md:py-14">
         <div className="text-xs uppercase tracking-[0.22em] text-white/55">
-          AMSE BOARD
+          AMSE Photo
         </div>
         <h1 className="mt-3 text-3xl md:text-5xl font-semibold text-white leading-tight">
           Activities & Moments
@@ -79,7 +79,7 @@ function PhotoCard({
 export default function BoardPage() {
   return (
     <div className="min-h-screen bg-black">
-      <Section title="Board" light titleAlign="left">
+      <Section title="Photo" light titleAlign="left">
         <Banner />
 
         <div className="mt-10">

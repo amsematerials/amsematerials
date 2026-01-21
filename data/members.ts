@@ -45,17 +45,17 @@ export const phds: Member[] = [
     ],
   },
   {
-    id: "phd-taehwan-jang",
-    nameEn: "Taehwan Jang",
-    nameKr: "장태환",
+    id: "phd-seongu-sin",
+    nameEn: "Seong U Sin",
+    nameKr: "신성우",
     role:
-      "G-LAMP Postdoctoral Researcher (Oh–Yoon Shared Lab), Ph.D (Pusan National University)",
-    photo: "/members/taehwan_jang.jpg",
+      "Ph.D",
+    photo: "/members/default.jpg",
     info: [
-      { label: "Birthplace", value: "부산광역시 해운대구" },
-      { label: "High School", value: "김해 삼방고등학교" },
-      { label: "Favorite Pastime", value: "배드민턴" },
-      { label: "Research field", value: "박막측정/트라이볼로지" },
+      { label: "Birthplace", value: "000" },
+      { label: "High School", value: "000" },
+      { label: "Favorite Pastime", value: "000" },
+      { label: "Research field", value: "000" },
     ],
   },
 ];
@@ -65,7 +65,7 @@ export const students: Member[] = [
     id: "stu-kihyun-yoon",
     nameEn: "Kihyun Yoon",
     nameKr: "윤기현",
-    role: "Master's–Doctoral Program (expected)",
+    role: "Master's–Doctoral Program",
     photo: "/members/kihyun_yoon.jpg",
     info: [
       { label: "Birthplace", value: "창원특례시 마산회원구" },

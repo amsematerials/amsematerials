@@ -6,6 +6,7 @@ import Image from "next/image";
 import Section from "@/components/Section";
 import Link from "next/link";
 import NewsSection from "@/components/newssection";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -290,7 +291,7 @@ export default function HomePage() {
                 type="button"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm text-white/85 hover:bg-white/10 hover:border-white/30 transition"
               >
-               Contact <span className="text-white/60">~&gt;</span>
+               Contact <span className="text-white/60">→</span>
               </button>
             </Link>
           </div>
@@ -309,6 +310,8 @@ export default function HomePage() {
           </div>
        </div>
       </Section>
+
+    <ScrollToTop />
 
     </div>
   );

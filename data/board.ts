@@ -18,7 +18,6 @@ export const boardPhotos: BoardPhoto[] = [
   { id: 7, src: "/board/board-07.jpg", alt: "Lab activity photo 07" },
   { id: 8, src: "/board/board-08.jpg", alt: "Lab activity photo 08" },
   { id: 9, src: "/board/board-09.jpg", alt: "Lab activity photo 09" },
-  { id: 10, src: "/board/board-10.jpg", alt: "Lab activity photo 10" },
   { id: 11, src: "/board/board-11.jpg", alt: "Lab activity photo 11" },
   { id: 12, src: "/board/board-12.jpg", alt: "Lab activity photo 12" },
   { id: 13, src: "/board/board-13.jpg", alt: "Lab activity photo 13" },
@@ -32,5 +31,4 @@ export const boardPhotos: BoardPhoto[] = [
   { id: 21, src: "/board/board-21.jpg", alt: "Lab activity photo 21" },
   { id: 22, src: "/board/board-22.jpg", alt: "Lab activity photo 22" },
   { id: 23, src: "/board/board-23.jpg", alt: "Lab activity photo 23" },
-  { id: 24, src: "/board/board-24.jpg", alt: "Lab activity photo 24" },
 ];

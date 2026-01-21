@@ -1,93 +1,73 @@
-"use client";
-
+// components/newssection.tsx
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import Section from "@/components/Section";
-import { newsItems } from "@/data/news";
-
-function parseDate(dateStr: string) {
-  const [y, m, d] = dateStr.split(".").map((v) => parseInt(v, 10));
-  return y * 10000 + m * 100 + d;
-}
-
-// ✅ 카테고리 표기 통일 (news/media -> NEWS/MEDIA)
-function labelOf(category?: string) {
-  const c = (category ?? "news").toLowerCase().trim();
-  return c === "media" ? "MEDIA" : "NEWS";
-}
+import { getLatestNews } from "@/data/news";
 
 export default function NewsSection() {
-  const latest = [...newsItems]
-    .sort((a, b) => parseDate(b.date) - parseDate(a.date))
-    .slice(0, 4);
+  const latest = getLatestNews(4);
 
   return (
-    <Section light>
-      {/* Header */}
-      <div className="flex items-end justify-between gap-6">
-        <div>
-          <h2 className="text-4xl md:text-6xl font-semibold leading-tight">
+    <section className="px-6 md:px-12 py-20 bg-black">
+      <div className="max-w-6xl mx-auto">
+        {/* 헤더 */}
+        <div className="flex items-start justify-between">
+          <h2 className="text-4xl md:text-6xl font-bold text-white">
             News &amp; media
           </h2>
+
+          <Link
+            href="/news"
+            className="mt-3 inline-flex items-center gap-3 text-white/70 hover:text-white transition"
+          >
+            <span className="tracking-[0.18em] uppercase text-xs">VIEW MORE</span>
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20">
+              →
+            </span>
+          </Link>
         </div>
 
-        <Link
-          href="/news"
-          className="group inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition"
-        >
-          <span className="tracking-[0.12em] uppercase">View more</span>
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/25 group-hover:border-white/45 transition">
-            →
-          </span>
-        </Link>
-      </div>
+        {/* 카드 그리드 */}
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
+          {latest.map((item) => (
+            <Link
+              key={item.slug}
+              href={`/news/${item.slug}/`}
+              className="group block"
+              aria-label={`${item.title} 기사 보기`}
+            >
+              {/* 상단 라벨 / 타이틀 */}
+              <div className="border-t border-white/15 pt-5">
+                <div className="text-[11px] tracking-[0.28em] text-white/55 uppercase">
+                  {item.category}
+                </div>
 
-      {/* Cards */}
-      <div className="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
-        {latest.map((item) => (
-          <motion.div
-            key={item.slug}
-            initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Link href={`/news/${item.slug}`} className="group block">
-              {/* top line */}
-              <div className="h-px w-full bg-white/20 mb-6" />
+                {/* 제목 3줄 고정 + \n 유지 */}
+                <div
+                  className="news-title mt-4 text-lg font-semibold leading-snug text-white/90 group-hover:text-white transition line-clamp-3 min-h-[4.5em]"
+                  style={{ whiteSpace: "pre-line" }}
+                >
+                  {item.title}
+                </div>
 
-              {/* ✅ NEWS / MEDIA */}
-              <div className="text-xs tracking-[0.22em] uppercase text-white/65">
-                {labelOf(item.category)}
-              </div>
+                <div className="mt-8 text-xs text-white/50">{item.date}</div>
 
-              {/* ✅ 제목: 3줄 넘어가면 ... + 높이 통일 */}
-              <div className="news-title mt-4 text-lg font-semibold leading-snug text-white/90 group-hover:text-white transition line-clamp-3 min-h-[4.5em]">
-                {item.title}
-              </div>
-
-              <div className="mt-3 text-xs text-white/55">{item.date}</div>
-
-              {/* thumb */}
-              <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={item.thumbnail}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                    className="object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition duration-500" />
+                {/* 썸네일 */}
+                <div className="mt-6">
+                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 bg-white/5 group-hover:border-white/20 transition">
+                    <Image
+                      src={item.thumbnail}
+                      alt={item.title}
+                      fill
+                      className="object-cover scale-[1.02] group-hover:scale-[1.04] transition duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-90" />
+                  </div>
                 </div>
               </div>
-
-              <div className="mt-6 h-px w-full bg-white/10 group-hover:bg-white/25 transition" />
             </Link>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
