@@ -20,41 +20,29 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
 
-  // ✅ 페이지 이동 시 자동 닫기
+  /* ✅ 페이지 이동 시 메뉴 자동 닫기 */
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  // ✅ ESC로 닫기
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
-
-  // ✅ 바깥 클릭으로 닫기
+  /* ✅ 메뉴 열리면 body 스크롤 완전 차단 */
   useEffect(() => {
     if (!open) return;
 
-    const onMouseDown = (e: MouseEvent) => {
-      const target = e.target as Node;
-      if (panelRef.current && !panelRef.current.contains(target)) {
-        setOpen(false);
-      }
-    };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
-    document.addEventListener("mousedown", onMouseDown);
-    return () => document.removeEventListener("mousedown", onMouseDown);
+    return () => {
+      document.body.style.overflow = prev;
+    };
   }, [open]);
 
+  /* ================= HEADER ================= */
   return (
-    <header className="border-b border-white/10 sticky top-0 z-50 backdrop-blur bg-black/60">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
       <nav className="w-full px-6 py-3 flex items-center">
         {/* LEFT: 로고 */}
-        <Link href={withPrefix("/", prefix)} className="flex items-center gap-3 shrink-0">
+        <Link href={withPrefix("/", prefix)} className="flex items-center shrink-0">
           <Image
             src="/logo-amse-s.png"
             alt="AMSE"
@@ -69,117 +57,104 @@ export default function SiteHeader() {
         <div className="ml-auto flex items-center gap-3 md:gap-6">
           {/* 데스크탑 메뉴 */}
           <div className="hidden md:flex gap-7 text-sm text-white/80">
-            <Link href={withPrefix("/news", prefix)} className="hover:text-white transition">
-              News &amp; media
-            </Link>
-            <Link href={withPrefix("/publications", prefix)} className="hover:text-white transition">
-              Publications
-            </Link>
-            <Link href={withPrefix("/members", prefix)} className="hover:text-white transition">
-              Members
-            </Link>
-            <Link href={withPrefix("/board", prefix)} className="hover:text-white transition">
-              Photo
-            </Link>
-            <Link href={withPrefix("/contact", prefix)} className="hover:text-white transition">
-              Contact
-            </Link>
+            <Link href={withPrefix("/news", prefix)} className="hover:text-white">News &amp; media</Link>
+            <Link href={withPrefix("/publications", prefix)} className="hover:text-white">Publications</Link>
+            <Link href={withPrefix("/members", prefix)} className="hover:text-white">Members</Link>
+            <Link href={withPrefix("/board", prefix)} className="hover:text-white">Photo</Link>
+            <Link href={withPrefix("/contact", prefix)} className="hover:text-white">Contact</Link>
           </div>
 
-          {/* ✅ 모바일 메뉴 버튼 */}
+          {/* 모바일 햄버거 */}
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="md:hidden w-9 h-9 grid place-items-center rounded-full border border-white/15 bg-white/5 text-white/85"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
+            onClick={() => setOpen(true)}
+            className="md:hidden w-9 h-9 grid place-items-center rounded-full
+                       border border-white/15 bg-white/5 text-white/85"
+            aria-label="Open menu"
           >
-            {open ? "✕" : "☰"}
+            ☰
           </button>
 
-          {/* 🌐 언어 메뉴 */}
           <LanguageMenu />
         </div>
       </nav>
 
-      {/* ✅ 오프화이트 느낌: 오른쪽 슬라이드 메뉴 */}
-      {/* 오버레이 */}
-      <div
-        className={`fixed inset-0 z-[60] transition-opacity duration-200 ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-        aria-hidden={!open}
-      >
-        {/* 배경(어둡게) */}
-        <div className="absolute inset-0 bg-black/80" />
+      {/* ================= MOBILE SLIDE MENU ================= */}
+      {open && (
+        <div className="fixed inset-0 z-[60]">
+          {/* 어두운 배경 (클릭 시 닫힘) */}
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/80"
+            aria-label="Close menu backdrop"
+            onClick={() => setOpen(false)}
+          />
 
-        {/* 패널 */}
-        <div
-          ref={panelRef}
-          style={{
-           paddingTop: "env(safe-area-inset-top)",
-           paddingBottom: "env(safe-area-inset-bottom)",
-         }}
-         className={`absolute right-0 top-0 h-[100dvh] w-[78vw] max-w-[360px]
-         border-l border-white/10 bg-[#0b0b0c]
-         transition-transform duration-200 ease-out
-         ${open ? "translate-x-0" : "translate-x-full"}`}
-         role="dialog"
-         aria-modal="true"
-         aria-label="Mobile navigation"
-        >
-          {/* 상단 */}
-          <div className="h-px bg-white/10 mx-6" />
+          {/* 슬라이드 패널 */}
+          <div
+            ref={panelRef}
+            style={{
+              paddingTop: "env(safe-area-inset-top)",
+              paddingBottom: "env(safe-area-inset-bottom)",
+            }}
+            className="
+              fixed top-0 right-0 z-[70]
+              h-[100dvh] w-[78vw] max-w-[360px]
+              bg-[#0b0b0c] border-l border-white/10
+              flex flex-col
+            "
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+          >
+            {/* 상단 */}
+            <div className="px-6 pt-6 pb-4 flex justify-between items-center">
+              <span className="text-xs tracking-[0.3em] uppercase text-white/70">
+                Menu
+              </span>
+              <button
+                onClick={() => setOpen(false)}
+                className="w-9 h-9 grid place-items-center rounded-full
+                           border border-white/15 bg-white/5 text-white/85"
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+            </div>
 
-          {/* 메뉴 링크 */}
-          <div className="px-6 py-5 flex flex-col gap-2 text-white/85">
-            <Link
-              onClick={() => setOpen(false)}
-              href={withPrefix("/news", prefix)}
-              className="py-3 text-base border-b border-white/10 hover:text-white transition"
-            >
-              News &amp; media
-            </Link>
-            <Link
-              onClick={() => setOpen(false)}
-              href={withPrefix("/publications", prefix)}
-              className="py-3 text-base border-b border-white/10 hover:text-white transition"
-            >
-              Publications
-            </Link>
-            <Link
-              onClick={() => setOpen(false)}
-              href={withPrefix("/members", prefix)}
-              className="py-3 text-base border-b border-white/10 hover:text-white transition"
-            >
-              Members
-            </Link>
-            <Link
-              onClick={() => setOpen(false)}
-              href={withPrefix("/board", prefix)}
-              className="py-3 text-base border-b border-white/10 hover:text-white transition"
-            >
-              Photo
-            </Link>
-            <Link
-              onClick={() => setOpen(false)}
-              href={withPrefix("/contact", prefix)}
-              className="py-3 text-base hover:text-white transition"
-            >
-              Contact
-            </Link>
-          </div>
+            <div className="h-px bg-white/10 mx-6" />
 
-          {/* 하단(옵션) */}
-          <div className="absolute bottom-0 left-0 right-0 px-6 pb-8">
-            <div className="h-px bg-white/10 mb-5" />
-            <div className="text-xs text-white/55 leading-relaxed">
-              AMSE Laboratory <br />
-              Changwon National University
+            {/* 메뉴 */}
+            <div className="px-6 py-5 flex flex-col text-white/85">
+              {[
+                ["News & media", "/news"],
+                ["Publications", "/publications"],
+                ["Members", "/members"],
+                ["Photo", "/board"],
+                ["Contact", "/contact"],
+              ].map(([label, path]) => (
+                <Link
+                  key={path}
+                  href={withPrefix(path, prefix)}
+                  onClick={() => setOpen(false)}
+                  className="py-3 border-b border-white/10 hover:text-white"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+
+            {/* 하단 */}
+            <div className="mt-auto px-6 pb-8">
+              <div className="h-px bg-white/10 mb-4" />
+              <div className="text-xs text-white/55 leading-relaxed">
+                AMSE Laboratory <br />
+                Changwon National University
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }
