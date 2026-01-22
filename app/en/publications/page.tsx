@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Section from "@/components/Section";
-import { publications } from "../../data/publications";
+import { publications } from "@/data/publications.en";
 import CoverImage from "@/components/CoverImage";
 
 export default function PublicationsPage() {
