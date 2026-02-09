@@ -38,7 +38,7 @@ export const newsItems: NewsItem[] = [
     excerpt: " ",
     content: [
       { type: "p", text: "AMSE 새해 기념 단체 회식 실시했습니다." },
-      { type: "p", text: "잘먹었습니다!" },
+      { type: "p", text: "" },
     ],
   },
 
@@ -46,7 +46,7 @@ export const newsItems: NewsItem[] = [
     slug: "amse-tour0105-2026",
     category: "media",
     title: "엔젤럭스 및 세기원 견학 실시",
-    date: "2026.01.22",
+    date: "2026.01.05",
     thumbnail: "/images/news/news-260105.jpg",
     excerpt: " ",
     content: [
@@ -60,11 +60,11 @@ export const newsItems: NewsItem[] = [
     category: "news",
     title: "CoCrCuFeNi HEA 논문\nEngineering Failure\nAnalysis 게재",
     date: "2025.11.13",
-    thumbnail: "/images/news/news-251113.jpg",
+    thumbnail: "/images/news/news-251113e.jpg",
     excerpt: " ",
     content: [
       { type: "p", text: "CoCrCuFeNi HEA EFA 논문 최종 게재에 성공했습니다." },
-      { type: "p", text: "대박." },
+      { type: "p", text: "" },
     ],
   },  
   // ...나머지

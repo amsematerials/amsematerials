@@ -40,17 +40,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         {/* 푸터 */}
         <footer className="border-t border-white/10 mt-20">
-          <div className="max-w-6xl mx-auto px-4 py-6 text-xs text-white/60">
-          AMSE Laboratory
-          <br />
-          Departmnet of Mechanical Engineering
-          <br />
-          Changwon National University
-          <br />
-          <br />
-            © {new Date().getFullYear()} AMSE Laboratory.
-            All rights reserved.
-          </div>
+        <div className="max-w-6xl mx-auto px-4 py-6 text-xs text-white/60 flex items-center justify-between">
+    
+        {/* 왼쪽 텍스트 */}
+        <div>
+        © {new Date().getFullYear()} Advanced Materials & Strength Evaluation Lab.
+        All rights reserved. Designed & Developed by Chanui Park.
+        </div>
+
+        {/* 오른쪽 학교 마크 */}
+       <Image
+         src="/logo-cwnu_en.png"   // ← public 폴더에 있는 파일명
+         alt="Changwon National University"
+         width={160}
+         height={48}
+         className="opacity-70"
+       />
+        </div>
         </footer>
       </body>
     </html>

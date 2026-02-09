@@ -45,17 +45,17 @@ export const phds: Member[] = [
     ],
   },
   {
-    id: "phd-seongu-sin",
-    nameEn: "Seong U Sin",
+    id: "phd-sungwoo-shin",
+    nameEn: "Sungwoo Shin",
     nameKr: "신성우",
     role:
-      "Ph.D",
-    photo: "/members/default.jpg",
+      "Research Institute of DNA+, Ph.D",
+    photo: "/members/sungwoo_shin.jpg",
     info: [
-      { label: "Birthplace", value: "000" },
-      { label: "High School", value: "000" },
-      { label: "Favorite Pastime", value: "000" },
-      { label: "Research field", value: "000" },
+      { label: "Birthplace", value: "창원특례시" },
+      { label: "High School", value: "창원시 경상고등학교" },
+      { label: "Favorite Pastime", value: "-" },
+      { label: "Research field", value: "공작기계" },
     ],
   },
 ];
@@ -135,7 +135,7 @@ export const students: Member[] = [
     info: [
       { label: "Birthplace", value: "창원특례시 진해구" },
       { label: "High School", value: "진해고등학교" },
-      { label: "Favorite Pastime", value: "음악 감상, 코딩, 영상편집" },
+      { label: "Favorite Pastime", value: "음악, 코딩, 여행" },
       {
         label: "Research field",
         value: "AI-Assisted Computer Aided Engineering (AIA CAE)",

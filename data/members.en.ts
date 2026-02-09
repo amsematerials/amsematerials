@@ -17,7 +17,7 @@ export const professor: Member = {
   photo: "/members/sungmin_yoon.jpg",
   info: [
     { label: "Birthplace", value: "Jinhae-gu, Changwon-si" },
-    { label: "Favorite Pastime", value: "electric guitar" },
+    { label: "Favorite Pastime", value: "Electric guitar" },
     { label: "High School", value: " Busan Haeundae High School" },
     {
       label: "Research field",
@@ -45,17 +45,17 @@ export const phds: Member[] = [
     ],
   },
   {
-    id: "phd-seongu-sin",
-    nameEn: "Seong U Sin",
+    id: "phd-sungwoo-shin",
+    nameEn: "Sungwoo Shin",
     nameKr: "신성우",
     role:
-      "Ph.D",
-    photo: "/members/default.jpg",
+      "Research Institute of DNA+, Ph.D",
+    photo: "/members/sungwoo_shin.jpg",
     info: [
-      { label: "Birthplace", value: "000" },
-      { label: "High School", value: "000" },
-      { label: "Favorite Pastime", value: "000" },
-      { label: "Research field", value: "000" },
+      { label: "Birthplace", value: "Changwon-si" },
+      { label: "High School", value: "Gyeongsang High School" },
+      { label: "Favorite Pastime", value: "-" },
+      { label: "Research field", value: "Machine tools" },
     ],
   },
 ];
@@ -70,7 +70,7 @@ export const students: Member[] = [
     info: [
       { label: "Birthplace", value: "Masanhoewon-gu, Changwon-si" },
       { label: "High School", value: "Masan Jungang High School" },
-      { label: "Favorite Pastime", value: "weight training" },
+      { label: "Favorite Pastime", value: "Weight training" },
       { label: "Research field", value: "Composite material (carbon fiber, basalt fiber)" },
     ],
   },
@@ -96,7 +96,7 @@ export const students: Member[] = [
     info: [
       { label: "Birthplace", value: "Masanhoewon-gu, Changwon-si" },
       { label: "High School", value: "Masan Yongma High School" },
-      { label: "Favorite Pastime", value: "swimming" },
+      { label: "Favorite Pastime", value: "Swimming" },
       { label: "Research field", value: "Metal Matrix Composite, MMC" },
     ],
   },
@@ -109,7 +109,7 @@ export const students: Member[] = [
     info: [
       { label: "Birthplace", value: "Jinhae-gu, Changwon-si" },
       { label: "High School", value: "Jinhae high school" },
-      { label: "Favorite Pastime", value: "Rap" },
+      { label: "Favorite Pastime", value: "Listening to music" },
       { label: "Research field", value: "Fatigue analysis (metal, composite)" },
     ],
   },
@@ -135,7 +135,7 @@ export const students: Member[] = [
     info: [
       { label: "Birthplace", value: "Jinhae-gu, Changwon-si" },
       { label: "High School", value: "Jinhae high school" },
-      { label: "Favorite Pastime", value: "Listening to music, coding, and editing videos" },
+      { label: "Favorite Pastime", value: "Music, coding, and traveling" },
       {
         label: "Research field",
         value: "AI-Assisted Computer Aided Engineering (AIA CAE)",
@@ -154,7 +154,7 @@ export const students: Member[] = [
       {
         label: "Favorite Pastime",
         value:
-          "Walk, explore cultural heritage, travel, bike, design, regulation, F1, piano, indie musician discovery",
+          "Walk, explore cultural heritage, travel, bike, design, regulation, F1, piano, and indie musician discovery",
       },
       { label: "Research field", value: "Composite Materials (Carbon Fiber, Basalt Fiber)" },
     ],

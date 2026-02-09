@@ -1,11 +1,13 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Section from "@/components/Section";
-import { boardPhotos } from "@/data/board";
+import { boardPhotos } from "@/data/board.en";
 
 function Banner() {
   return (
     <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-      {/* glow */}
       <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-teal-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
 
@@ -18,36 +20,39 @@ function Banner() {
         </h1>
         <p className="mt-4 max-w-2xl text-sm md:text-base text-white/70 leading-relaxed">
           연구실의 학회, 발표, 세미나, 방문/견학 등 활동 사진을 모아두는 공간입니다. <br />
-          사진 위에 마우스를 올리면 간단한 정보가 표시됩니다.
+          사진을 클릭 시 크게볼 수 있습니다. <br />
         </p>
       </div>
     </div>
   );
 }
 
-function PhotoCard({
-  src,
-  alt,
-  title,
-  date,
-  place,
-}: {
+type Photo = {
+  id: string | number;
   src: string;
   alt: string;
   title?: string;
   date?: string;
   place?: string;
+};
+
+function PhotoCard({
+  photo,
+  onOpen,
+}: {
+  photo: Photo;
+  onOpen: (p: Photo) => void;
 }) {
+  const { src, alt, title, date, place } = photo;
+
   return (
-    <div className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-      {/* ✅ 높이는 이미지 비율 따라가게: Image fill + aspect 고정 안 함
-          -> wrapper에 "relative"만 두고, 실제 높이는 이미지 로딩 후 자연스럽게 잡기 어려우니
-             여기서는 "img" 방식보다 Next/Image를 쓰되
-             sizes + width/height를 주는 방식(추천)으로 감.
-      */}
+    <button
+      type="button"
+      onClick={() => onOpen(photo)}
+      className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left focus:outline-none focus:ring-2 focus:ring-white/30"
+      aria-label={`Open photo: ${title ?? alt}`}
+    >
       <div className="relative w-full">
-        {/* 너가 사진 크기가 들쑥날쑥일 때도 예쁘게 보이게:
-            object-cover + hover zoom + 살짝 그라데이션 */}
         <Image
           src={src}
           alt={alt}
@@ -60,7 +65,6 @@ function PhotoCard({
 
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition" />
 
-        {/* hover caption */}
         {(title || date || place) && (
           <div className="pointer-events-none absolute left-0 right-0 bottom-0 p-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition duration-300">
             <div className="text-sm font-semibold text-white">
@@ -72,37 +76,123 @@ function PhotoCard({
           </div>
         )}
       </div>
+    </button>
+  );
+}
+
+function PhotoModal({
+  photo,
+  onClose,
+}: {
+  photo: Photo | null;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!photo) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [photo, onClose]);
+
+  if (!photo) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100]" aria-modal="true" role="dialog">
+      {/* 배경 (클릭하면 닫기) */}
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute inset-0 bg-black/75 backdrop-blur-[2px]"
+        aria-label="Close modal backdrop"
+      />
+
+      {/* ✅ X 버튼: 화면 우측 상단 고정 */}
+      <button
+        type="button"
+        onClick={onClose}
+        className="fixed right-4 top-4 z-[110] inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/70 text-white/80 hover:bg-black/90 hover:text-white transition"
+        aria-label="Close"
+      >
+        ✕
+      </button>
+
+      {/* ✅ 컨텐츠: 항상 한 화면에 들어오게 */}
+      <div className="absolute inset-0 z-[105] flex items-center justify-center p-4 md:p-8">
+        {/* 카드 전체 높이를 뷰포트에 맞춰 제한 */}
+        <div className="w-full max-w-6xl max-h-[calc(100vh-4rem)] md:max-h-[calc(100vh-6rem)] overflow-hidden rounded-2xl border border-white/10 bg-black">
+          {/* 이미지 영역: 캡션 공간을 미리 빼고, 그 안에서만 꽉 맞춤 */}
+          <div className="flex items-center justify-center p-2">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              width={2400}
+              height={1600}
+              sizes="100vw"
+              priority
+              className="
+                w-auto
+                h-auto
+                max-w-[calc(100vw-2rem)]
+                md:max-w-[calc(100vw-4rem)]
+                max-h-[calc(100vh-7.5rem)]
+                md:max-h-[calc(100vh-9.5rem)]
+                object-contain
+              "
+            />
+          </div>
+
+          {/* 캡션(있을 때만) */}
+          {(photo.title || photo.date || photo.place) && (
+            <div className="border-t border-white/10 bg-black/70 px-5 py-4">
+              <div className="text-sm font-semibold text-white">
+                {photo.title ?? "Activity"}
+              </div>
+              <div className="mt-1 text-xs text-white/70">
+                {[photo.date, photo.place].filter(Boolean).join(" · ")}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
 
+
+
 export default function BoardPage() {
+  const [selected, setSelected] = useState<Photo | null>(null);
+
   return (
     <div className="min-h-screen bg-black">
       <Section title="Photo" light titleAlign="left">
         <Banner />
 
         <div className="mt-10">
-          {/* ✅ Masonry 느낌: CSS columns가 제일 간단하고 예쁘다 */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
             {boardPhotos.map((p) => (
-              <PhotoCard
-                key={p.id}
-                src={p.src}
-                alt={p.alt}
-                title={p.title}
-                date={p.date}
-                place={p.place}
-              />
+              <PhotoCard key={p.id} photo={p as Photo} onOpen={setSelected} />
             ))}
           </div>
         </div>
 
-        {/* 하단 여백 */}
         <div className="mt-10 text-xs text-white/40">
-          * 사진은 public/board 폴더에 추가하고, data/board.ts에 항목만 늘리면 자동으로 반영됩니다.
+          {/* * 사진은 public/board 폴더에 추가하고, data/board.ts에 항목만 늘리면 자동으로 반영됩니다. */}
         </div>
       </Section>
+
+      {/* 모달 */}
+      <PhotoModal photo={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }

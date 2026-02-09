@@ -11,6 +11,15 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    id: 39,
+    year: "2026",
+    authors: "Shaojie Gu, Sungmin Yoon, Chang Liu, Yanhong Peng, Yi Cui, Yasuhiro Kimura, Yuhki Toku, Yasuyuki Morita, Jang Ju",
+    title: "Electric current-driven microstructural recovery and crack resistance enhancement in Ni-based superalloy Inconel 718",
+    venue: "Materials Science and Engineering: A",
+    doiUrl: "https://doi.org/10.1016/j.msea.2026.149781",
+    cover: "/journals/msea.jpg"
+  },
+  {
     id: 38,
     year: "2025",
     authors: "Hongchul Shin, Taeyoung Yoon, Sungmin Yoon",

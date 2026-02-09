@@ -38,7 +38,7 @@ export const newsItems: NewsItem[] = [
     excerpt: " ",
     content: [
       { type: "p", text: "AMSE New Year's celebration group dinner was held." },
-      { type: "p", text: "Thank you for the food!" },
+      { type: "p", text: "" },
     ],
   },
 
@@ -46,7 +46,7 @@ export const newsItems: NewsItem[] = [
     slug: "amse-tour0105-2026",
     category: "media",
     title: "Conducted a field trip to Angel Lux and KICET",
-    date: "2026.01.22",
+    date: "2026.01.05",
     thumbnail: "/images/news/news-260105.jpg",
     excerpt: " ",
     content: [
@@ -60,11 +60,11 @@ export const newsItems: NewsItem[] = [
     category: "news",
     title: "CoCrCuFeNi HEA paper published by Engineering Failure Analysis",
     date: "2025.11.13",
-    thumbnail: "/images/news/news-251113.jpg",
+    thumbnail: "/images/news/news-251113e.jpg",
     excerpt: " ",
     content: [
       { type: "p", text: "The final publication of the CoCrCuFeNi HEA EFA paper was successful." },
-      { type: "p", text: "Jackpot." },
+      { type: "p", text: "" },
     ],
   },  
   // ...나머지

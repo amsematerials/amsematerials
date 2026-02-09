@@ -9,9 +9,10 @@ export type BoardPhoto = {
 
 export const boardPhotos: BoardPhoto[] = [
   // ✅ 예시 (네가 public/board 에 파일 넣고 이름만 맞춰주면 됨)
-  { id: 1, src: "/board/board-01.jpg", alt: "Lab activity photo 01", title: "Lecture", date: "2025.07", place: "Changwon national university" },
-  { id: 2, src: "/board/board-02.jpg", alt: "Lab activity photo 02", title: "Session", date: "2025.07" },
-  { id: 3, src: "/board/board-03.jpg", alt: "Lab activity photo 03", title: "Group photo", date: "2025.07" },
+  // { id: n, src: "/board/board-n.jpg", alt: "Lab activity photo n", title: "n", date: "20nn.n", place: "n" },  
+  { id: 1, src: "/board/board-01.jpg", alt: "Lab activity photo 01" },
+  { id: 2, src: "/board/board-02.jpg", alt: "Lab activity photo 02" },
+  { id: 3, src: "/board/board-03.jpg", alt: "Lab activity photo 03" },
   { id: 4, src: "/board/board-04.jpg", alt: "Lab activity photo 04" },
   { id: 5, src: "/board/board-05.jpg", alt: "Lab activity photo 05" },
   { id: 6, src: "/board/board-06.jpg", alt: "Lab activity photo 06" },
@@ -31,4 +32,5 @@ export const boardPhotos: BoardPhoto[] = [
   { id: 21, src: "/board/board-21.jpg", alt: "Lab activity photo 21" },
   { id: 22, src: "/board/board-22.jpg", alt: "Lab activity photo 22" },
   { id: 23, src: "/board/board-23.jpg", alt: "Lab activity photo 23" },
+  { id: 24, src: "/board/board-24.jpg", alt: "Lab activity photo 24" },  
 ];

@@ -49,11 +49,12 @@ export default function ContactPage() {
   const address =
     "Changwon National University, Changwon, Republic of Korea (Building 50 Room 105)";
 
-  const googleMapLink =
-    "https://www.google.com/maps/search/?api=1&query=Changwon+National+University+Engineering+Experiment+Building+1&hl=en";
-  const googleMapEmbed =
-    "https://www.google.com/maps?q=Changwon+National+University+Engineering+Experiment+Building+1&output=embed&hl=en";
+  const placeQuery = "창원대학교 공대실험1동"
 
+  const googleMapLink =
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeQuery)}&hl=en`;
+  const googleMapEmbed =
+    `https://www.google.com/maps?q=${encodeURIComponent(placeQuery)}&output=embed&hl=en`;
   return (
     <div className="min-h-screen bg-black">
       <Section title="Contact & Location" light>
