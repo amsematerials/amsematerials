@@ -65,7 +65,7 @@ export const students: Member[] = [
     id: "stu-kihyun-yoon",
     nameEn: "Kihyun Yoon",
     nameKr: "윤기현",
-    role: "Master's–Doctoral Program",
+    role: "Second-Year Student in the Integrated M.S./Ph.D. Program",
     photo: "/members/kihyun_yoon.jpg",
     info: [
       { label: "Birthplace", value: "Masanhoewon-gu, Changwon-si" },
@@ -78,7 +78,7 @@ export const students: Member[] = [
     id: "stu-minho-kim",
     nameEn: "Minho Kim",
     nameKr: "김민호",
-    role: "M.1",
+    role: "Second-Year M.S. Student",
     photo: "/members/minho_kim.jpg",
     info: [
       { label: "Birthplace", value: "Masanhoewon-gu, Changwon-si" },
@@ -91,7 +91,7 @@ export const students: Member[] = [
     id: "stu-jeongwon-ha",
     nameEn: "Jeongwon Ha",
     nameKr: "허정원",
-    role: "B.4",
+    role: "First-Year M.S. Student",
     photo: "/members/jeongwon_ha.jpg",
     info: [
       { label: "Birthplace", value: "Masanhoewon-gu, Changwon-si" },
@@ -104,7 +104,7 @@ export const students: Member[] = [
     id: "stu-taemin-kim",
     nameEn: "Taemin Kim",
     nameKr: "김태민",
-    role: "B.3",
+    role: "Senior Undergraduate Researcher",
     photo: "/members/taemin_kim.jpg",
     info: [
       { label: "Birthplace", value: "Jinhae-gu, Changwon-si" },
@@ -117,7 +117,7 @@ export const students: Member[] = [
     id: "stu-minheon-chu",
     nameEn: "Minheon Chu",
     nameKr: "추민헌",
-    role: "B.3",
+    role: "Senior Undergraduate Researcher",
     photo: "/members/minheon_chu.jpg",
     info: [
       { label: "Birthplace", value: "Uichang-gu, Changwon-si" },
@@ -130,7 +130,7 @@ export const students: Member[] = [
     id: "stu-chanui-park",
     nameEn: "Chanui Park",
     nameKr: "박찬의",
-    role: "B.3",
+    role: "Senior Undergraduate Researcher",
     photo: "/members/chanui_park.jpg",
     info: [
       { label: "Birthplace", value: "Jinhae-gu, Changwon-si" },
@@ -146,7 +146,7 @@ export const students: Member[] = [
     id: "stu-joohan-jo",
     nameEn: "Joohan Jo",
     nameKr: "조주한",
-    role: "B.3",
+    role: "Senior Undergraduate Researcher",
     photo: "/members/joohan_jo.jpg",
     info: [
       { label: "Birthplace", value: "Seongsan-gu, Changwon-si" },

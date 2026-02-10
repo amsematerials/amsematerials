@@ -34,7 +34,7 @@ export const newsItems: NewsItem[] = [
     category: "media",
     title: "AMSE, 신년 회식 실시",
     date: "2026.01.16",
-    thumbnail: "/images/news/news-260116.jpg",
+    thumbnail: "/images/news/news-260116e.jpg",
     excerpt: " ",
     content: [
       { type: "p", text: "AMSE 새해 기념 단체 회식 실시했습니다." },
@@ -47,7 +47,7 @@ export const newsItems: NewsItem[] = [
     category: "media",
     title: "엔젤럭스 및 세기원 견학 실시",
     date: "2026.01.05",
-    thumbnail: "/images/news/news-260105.jpg",
+    thumbnail: "/images/news/news-260105e.jpg",
     excerpt: " ",
     content: [
       { type: "p", text: "엔젤럭스 및 세기원 견학을 실시했습니다." },

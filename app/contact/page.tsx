@@ -154,7 +154,7 @@ export default function ContactPage() {
             </div>
 
             <p className="mt-3 text-xs text-white/45">
-              If the map does not load, use “Open ↗” to view it in Google Maps.
+              지도가 로드되지 않으면 “Open ↗”을 사용하여 Google 지도에서 확인하세요.
             </p>
           </div>
         </div>

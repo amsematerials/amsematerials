@@ -45,7 +45,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* 왼쪽 텍스트 */}
         <div>
         © {new Date().getFullYear()} Advanced Materials & Strength Evaluation Lab.
-        All rights reserved. Designed & Developed by Chanui Park.
+        All rights reserved.<br />
+        Designed & Developed by Chanui Park.
         </div>
 
         {/* 오른쪽 학교 마크 */}

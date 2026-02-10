@@ -34,7 +34,7 @@ export const newsItems: NewsItem[] = [
     category: "media",
     title: "AMSE Holds New Year's Dinner Together",
     date: "2026.01.16",
-    thumbnail: "/images/news/news-260116.jpg",
+    thumbnail: "/images/news/news-260116e.jpg",
     excerpt: " ",
     content: [
       { type: "p", text: "AMSE New Year's celebration group dinner was held." },
@@ -47,7 +47,7 @@ export const newsItems: NewsItem[] = [
     category: "media",
     title: "Conducted a field trip to Angel Lux and KICET",
     date: "2026.01.05",
-    thumbnail: "/images/news/news-260105.jpg",
+    thumbnail: "/images/news/news-260105e.jpg",
     excerpt: " ",
     content: [
       { type: "p", text: "We conducted a tour of Angel Lux and KICET." },
