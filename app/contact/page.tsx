@@ -1,4 +1,5 @@
-import Section from "@/components/Section";
+import SectionStatic from "@/components/SectionStatic";
+import PageEnter from "@/components/PageEnter";
 
 function InfoRow({
   label,
@@ -56,7 +57,8 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <Section title="Contact & Location" light>
+      <PageEnter>
+      <SectionStatic title="Contact & Location" light>
         {/* ✅ items-stretch로 좌/우 높이 맞춤 */}
         <div className="grid lg:grid-cols-12 gap-8 items-stretch">
           {/* LEFT */}
@@ -156,7 +158,8 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
-      </Section>
+      </SectionStatic>
+      </PageEnter>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 // ✅ app/members/page.tsx (FINAL)
 
-import Section from "@/components/Section";
+import SectionStatic from "@/components/SectionStatic";
+import PageEnter from "@/components/PageEnter"
 import Image from "next/image";
 import { professor, phds, students, Member } from "@/data/members.en";
 
@@ -50,7 +51,8 @@ function MemberCard({ m }: { m: Member }) {
 export default function MembersPage() {
   return (
     <div className="min-h-screen bg-black">
-      <Section title="Members" light>
+      <PageEnter>
+      <SectionStatic title="Members" light>
         {/* Professor */}
         <MemberCard m={professor} />
 
@@ -71,7 +73,8 @@ export default function MembersPage() {
             <MemberCard key={m.id} m={m} />
           ))}
         </div>
-      </Section>
+      </SectionStatic>
+      </PageEnter>
     </div>
   );
 }

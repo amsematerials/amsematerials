@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
          alt="Changwon National University"
          width={160}
          height={48}
-         className="opacity-70"
+         className="opacity-100"
        />
         </div>
         </footer>

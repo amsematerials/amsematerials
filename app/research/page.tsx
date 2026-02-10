@@ -1,9 +1,11 @@
-import Section from "@/components/Section";
+import SectionStatic from "@/components/SectionStatic";
+import PageEnter from "@/components/PageEnter";
 
 export default function ResearchPage() {
   return (
     <div className="min-h-screen">
-      <Section title="Research Areas">
+      <PageEnter>
+      <SectionStatic title="Research Areas">
         <div className="space-y-6 text-sm">
           <div>
             <h3 className="font-semibold mb-1">1. High-Entropy Alloys (HEAs)</h3>
@@ -30,7 +32,8 @@ export default function ResearchPage() {
             </p>
           </div>
         </div>
-      </Section>
+      </SectionStatic>
+      </PageEnter>
     </div>
   );
 }

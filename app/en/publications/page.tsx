@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Section from "@/components/Section";
+import SectionStatic from "@/components/SectionStatic";
+import PageEnter from "@/components/PageEnter";
 import { publications } from "@/data/publications.en";
 import CoverImage from "@/components/CoverImage";
 
@@ -8,7 +9,8 @@ export default function PublicationsPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <Section light title="Publications">
+      <PageEnter>
+      <SectionStatic light title="Publications">
         {/* ✅ 디버그: 여기 숫자가 0이면 data가 비어있거나 import가 잘못된 것 */}
         <p className="text-xs text-white/50 mb-6">
           Loaded items: {sorted.length}
@@ -28,20 +30,19 @@ export default function PublicationsPage() {
                 <div className="grid md:grid-cols-12 gap-8 items-start">
                   <div className="md:col-span-4">
                     <div className="relative w-full max-w-[260px] aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-{p.cover ? (
-  <CoverImage
-    src={p.cover}
-    alt={`${p.venue} cover`}
-    className="absolute inset-0 h-full w-full object-cover"
-  />
-) : (
-  <div className="absolute inset-0 flex items-center justify-center">
-    <div className="text-xs tracking-[0.18em] uppercase text-white/40">
-      Journal Cover
-    </div>
-  </div>
-)}
-
+                      {p.cover ? (
+                       <CoverImage
+                         src={p.cover}
+                         alt={`${p.venue} cover`}
+                         className="absolute inset-0 h-full w-full object-cover"
+                       />
+                      ) : (
+                       <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-xs tracking-[0.18em] uppercase text-white/40">
+                            Journal Cover
+                          </div>
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                     </div>
                   </div>
@@ -89,7 +90,8 @@ export default function PublicationsPage() {
             ))}
           </div>
         )}
-      </Section>
+      </SectionStatic>
+      </PageEnter>
     </div>
   );
 }

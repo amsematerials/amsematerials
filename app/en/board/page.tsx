@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Section from "@/components/Section";
+import SectionStatic from "@/components/SectionStatic";
+import PageEnter from "@/components/PageEnter";
 import { boardPhotos } from "@/data/board.en";
 
 function Banner() {
@@ -176,7 +177,8 @@ export default function BoardPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <Section title="Photo" light titleAlign="left">
+      <PageEnter>
+      <SectionStatic title="Photo" light titleAlign="left">
         <Banner />
 
         <div className="mt-10">
@@ -190,8 +192,9 @@ export default function BoardPage() {
         <div className="mt-10 text-xs text-white/40">
           {/* * 사진은 public/board 폴더에 추가하고, data/board.ts에 항목만 늘리면 자동으로 반영됩니다. */}
         </div>
-      </Section>
-
+      </SectionStatic>
+      </PageEnter>
+      
       {/* 모달 */}
       <PhotoModal photo={selected} onClose={() => setSelected(null)} />
     </div>
