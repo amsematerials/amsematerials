@@ -17,6 +17,32 @@ export type NewsItem = {
 // ✅ 기존에 있던 배열 이름이 newsItems라면 유지
 export const newsItems: NewsItem[] = [
   {
+    slug: "amse-KSMPEspring-2026",
+    category: "news",
+    title: "Attending the 2026 Spring KSMPE",
+    date: "2026.04.30",
+    thumbnail: "/images/news/news-260430.jpg",
+    excerpt: " ",
+    content: [
+      { type: "p", text: "Researchers attended the 2026 Spring KSMPE." },
+      { type: "p", text: "The total number of students in the laboratory conducted a oral presentation." },
+    ],
+  },
+
+  {
+    slug: "amse-tribospring-2026",
+    category: "news",
+    title: "2026 Spring Trivology Attendance\nand awards at conferences",
+    date: "2026.04.24",
+    thumbnail: "/images/news/news-260424.jpg",
+    excerpt: " ",
+    content: [
+      { type: "p", text: "Researchers attended the 2026 Spring Trivology Conference." },
+      { type: "p", text: "Yoon Ki-hyun, a student in the Integrated M.S./Ph.D. Program, won the Excellence Award in the field of excellent thesis." },
+    ],
+  },
+
+  {
     slug: "amse-website-2026",
     category: "news",
     title: "AMSE, New Lab Website Open",

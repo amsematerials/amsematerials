@@ -11,6 +11,15 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    id: 40,
+    year: "2026",
+    authors: "Peiyao Sheng, Wenzhi Yang, Shaojie Gu, Sungmin Yoon, Zengtao Chen, Yi Cui",
+    title: "Atomistic and physics-informed neural network investigation of interfacial debonding in differently aligned nanoinclusions",
+    venue: "Computational Materials Science",
+    doiUrl: "https://doi.org/10.1016/j.commatsci.2026.114733",
+    cover: "/journals/cms.jpg"
+  },
+  {
     id: 39,
     year: "2026",
     authors: "Shaojie Gu, Sungmin Yoon, Chang Liu, Yanhong Peng, Yi Cui, Yasuhiro Kimura, Yuhki Toku, Yasuyuki Morita, Jang Ju",

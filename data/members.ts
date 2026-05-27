@@ -28,23 +28,6 @@ export const professor: Member = {
 
 export const phds: Member[] = [
   {
-    id: "phd-dogyun-byeon",
-    nameEn: "Dogyun Byeon",
-    nameKr: "변도균",
-    role:
-      "G-LAMP Postdoctoral Researcher (Oh–Yoon Shared Lab), Ph.D (Toyota Technological Institute)",
-    photo: "/members/dogyun_byeon.jpg",
-    info: [
-      { label: "Birthplace", value: "서울특별시 동대문구" },
-      { label: "High School", value: "서울시 경동고등학교" },
-      { label: "Favorite Pastime", value: "밴드드럼, 당구" },
-      {
-        label: "Research field",
-        value: "다중원소재료디자인(고엔트로피합금, 복합재료)",
-      },
-    ],
-  },
-  {
     id: "phd-sungwoo-shin",
     nameEn: "Sungwoo Shin",
     nameKr: "신성우",

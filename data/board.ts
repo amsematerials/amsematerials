@@ -33,5 +33,7 @@ export const boardPhotos: BoardPhoto[] = [
   { id: 22, src: "/board/board-22.jpg", alt: "Lab activity photo 22" },
   { id: 23, src: "/board/board-23.jpg", alt: "Lab activity photo 23" },
   { id: 24, src: "/board/board-24.jpg", alt: "Lab activity photo 24" },
-  { id: 25, src: "/board/board-25.jpg", alt: "Lab activity photo 25" },  
+  { id: 25, src: "/board/board-25.jpg", alt: "Lab activity photo 25" },
+  { id: 25, src: "/board/board-26.jpg", alt: "Lab activity photo 26" },
+  { id: 25, src: "/board/board-27.jpg", alt: "Lab activity photo 27" },
 ];
